@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: 'local'
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  mvc:
+    view:
+      prefix: '/WEB-INF/view/'
+      suffix: '.jsp'
+  http:
+    encoding:
+      charset: 'UTF-8'
+      enable: true
+      force : true
+    multipart:
+      maxFileSize: '10Mb'
+      maxRequestSize: '10Mb'
+
+---
+
+#error 페이지
+server:
+  jsp-servlet.init-parameters:
+    development: true
+  error:
+    path: '/error'
+    include-stacktrace: 'always'
+    whitelabel.enabled: true
+
+---

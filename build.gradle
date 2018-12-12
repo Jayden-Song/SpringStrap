@@ -1,0 +1,50 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.6.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath('io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE')
+	}
+}
+
+apply plugin: 'war'
+war {
+	baseName = 'spring-strap'
+	version = ''
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.spring-strap'
+version = '0.1.0-SPRAP'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	compile('org.springframework.boot:spring-boot-starter-web')
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+	providedRuntime group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.6'
+	providedRuntime group: 'org.apache.tomcat', name: 'tomcat-jasper', version: '9.0.6'
+
+	//Data Lombok
+	compileOnly('org.projectlombok:lombok')
+
+	//Validator
+	compile group: 'commons-validator', name: 'commons-validator', version: '1.4.0'
+
+	// Bootstrap web jar
+	compile('org.webjars:bootstrap:3.3.7')
+	
+}
